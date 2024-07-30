@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVP Project</title>
+    <title>Hacerca</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <style>
         .logo{
-            width: 100px; 
-            height:100px; 
+            /* width: 100px;  */
+            height:100px;
             object-fit:cover;
         }
         .heading{
-            font-family: Poppins, sans-serif; 
-            font-weight: 700; 
+            font-family: Poppins, sans-serif;
+            font-weight: 700;
             font-style: normal;
         }
         .paragrah{
-            width: 380px; 
-            font-family: Poppins, sans-serif; 
-            font-weight: 400; 
+            width: 380px;
+            font-family: Poppins, sans-serif;
+            font-weight: 400;
             font-style: normal;
         }
     </style>
