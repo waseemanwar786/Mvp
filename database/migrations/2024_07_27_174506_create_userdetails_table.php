@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('userdetails', function (Blueprint $table) {
             $table->id();
-            $table->integer('zip_code');
-            $table->string('city');
+            $table->integer('zip_code')->nullable();
+            $table->string('city')->nullable();
             $table->string('email');
             $table->timestamps();
         });
