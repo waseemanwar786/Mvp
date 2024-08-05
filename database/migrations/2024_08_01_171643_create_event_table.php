@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('event', function (Blueprint $table) {
+                $table->bigIncrements('id');
                 $table->string('title');
                 $table->string('image');
                 $table->boolean('status');
                 $table->string('slug');
                 $table->string('description');
                 $table->timestamps();
-
         });
     }
 

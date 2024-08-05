@@ -28,7 +28,7 @@ Route::get('/home', function () {
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
-    Route::get('/', 'EventController@index')->name('events.index');
+    
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -42,14 +42,24 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('users', 'UsersController');
 
     //event
-    Route::get('/create', 'EventController@create')->name('events.create');
+    Route::get('/events', 'EventController@index')->name('events.index');
+    Route::get('/events/create', 'EventController@create')->name('events.create');
     Route::post('/events/add', 'EventController@store')->name('events.store');
-    Route::get('/event/{id}', 'EventController@show')->name('events.show');
-    Route::get('/edit/{id}', 'EventController@edit')->name('events.edit');
+    Route::get('/events/show/{id}', 'EventController@show')->name('events.show');
+    Route::get('/events/edit/{id}', 'EventController@edit')->name('events.edit');
     Route::put('/events/update/{id}', 'EventController@update')->name('events.update');
     Route::delete('events/delete/{id}', 'EventController@delete')->name('events.delete');
+    
 
 });
+
+
+Route::group(['namespace' => 'Admin'], function () {
+    
+    Route::get('/events/{slug}', 'EventController@view_frontend')->name('events.frontend');
+    
+});
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {

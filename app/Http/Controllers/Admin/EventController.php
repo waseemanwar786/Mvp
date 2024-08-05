@@ -85,4 +85,11 @@ class EventController extends Controller
 
         return back();
     }
+
+    public function view_frontend($slug){
+        $event = Event::where('slug', $slug)->first();
+        abort_if(!$event, Response::HTTP_NOT_FOUND, '404 Not Found');
+
+        return view('registeruser', compact('event'));
+    }
 }

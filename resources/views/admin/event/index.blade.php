@@ -71,7 +71,7 @@
                             </td>
                             <td>
                                 @can('event_show')
-                                    <a class="btn btn-xs text-white btn-primary" href="{{ route('admin.events.show', $event->id) }}">View</a>
+                                    <a class="btn btn-xs text-white btn-primary" href="{{ route('events.frontend', $event->slug) }}">View</a>
                                 @endcan
 
                                 @can('event_edit')

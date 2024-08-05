@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacerca</title>
+    <title>Hacerca - {{ $event->title }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <style>
@@ -53,24 +53,14 @@
         </div>
         <div class="row">
            <div class="col-12 width-100">
-              <img src="{{ asset('images/cover_photo.PNG') }}" alt="Cover_Photo" class="cover-photo">
+              <img src="{{ URL::to($event->image) }}" alt="Cover_Photo" class="cover-photo">
             </div>
        </div>
         <div class="form-div row my-4">
             <div class="col-md-8">
                 <div class="mb-3">
-                    <h2 class="headings">Ice Cream Tasting for Kids and Adults</h2>
-                    <p class="paragraph" >Join us for a special event at Sunny Dae’s of Fairfield
-                        Ever wanted to taste test ALL the flavors and discover what
-                        is truly your favorite? Now you can at this special fun event.
-                        Register for the event. Limited to the first 50 registrations</p>
-                </div>
-                <div>
-                    <h2 class="headings">Event Details</h2>
-                    <p class="paragraph" >Sunny Dae’s Ice Cream | 2505 Black Rock Tpke, Fairfield, CT 06825 <br/><br/>
-                        August 28th, 2024 | 12pm <br/><br/>
-                        Registration required
-                    </p>
+                    <h2 class="headings">{{ $event->title }}</h2>
+                    {!! $event->description !!}
                 </div>
             </div>
             <div class="col-md-4">
@@ -94,6 +84,7 @@
                 <form action="{{ route('registeruser') }}" method="POST">
                 @csrf
                     <div class="mb-3">
+                        <input type="hidden" name="event_id" value="{{ $event->id }}">
                         <label for="name" class="form-label" >Name</label>
                          <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Enter name..." >
                         <label for="email" class="form-label" >Email</label>

@@ -28,7 +28,7 @@
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('permission_access')
-                        <li class="c-sidebar-nav-item">
+                        <li class="c-sidebar-nav-item" style="display:none;">
                             <a href="{{ route("admin.permissions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/permissions") || request()->is("admin/permissions/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-unlock-alt c-sidebar-nav-icon">
 
@@ -38,7 +38,7 @@
                         </li>
                     @endcan
                     @can('role_access')
-                        <li class="c-sidebar-nav-item">
+                        <li class="c-sidebar-nav-item" style="display:none;">
                             <a href="{{ route("admin.roles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/roles") || request()->is("admin/roles/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-briefcase c-sidebar-nav-icon">
 
