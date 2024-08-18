@@ -15,11 +15,13 @@ class UserController extends Controller
             'phone' => 'required',
             'zip' => 'required',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+
         UserRegister::create([
+            'event_id' => $request->event_id,
             'name' => $request->name,
             'email' => $request->email,
             'phone_no' => $request->phone,
@@ -31,7 +33,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -39,7 +41,7 @@ class UserController extends Controller
             'zip_code' => $request->zip,
             'city' => $request->city,
             'email' => $request->email,
-            
+
         ]);
         return redirect()->back()->with('success','You are successfully registered!');
     }

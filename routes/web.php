@@ -28,7 +28,7 @@ Route::get('/home', function () {
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
-    
+
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -49,15 +49,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('/events/edit/{id}', 'EventController@edit')->name('events.edit');
     Route::put('/events/update/{id}', 'EventController@update')->name('events.update');
     Route::delete('events/delete/{id}', 'EventController@delete')->name('events.delete');
-    
+    Route::get('events/users/{id}', 'EventController@users')->name('events.users');
+
 
 });
 
 
 Route::group(['namespace' => 'Admin'], function () {
-    
+
     Route::get('/events/{slug}', 'EventController@view_frontend')->name('events.frontend');
-    
+
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {

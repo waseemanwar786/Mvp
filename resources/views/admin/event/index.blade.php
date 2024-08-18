@@ -70,8 +70,11 @@
                             {!! $event->description ?? '' !!}
                             </td>
                             <td>
+
+                                <a class="btn btn-xs text-white btn-warning" href="{{ route('admin.events.users', $event->id) }}">Users</a>
+
                                 @can('event_show')
-                                    <a class="btn btn-xs text-white btn-primary" href="{{ route('events.frontend', $event->slug) }}">View</a>
+                                    <a class="btn btn-xs text-white btn-primary" target="_blank" href="{{ route('events.frontend', $event->slug) }}">View</a>
                                 @endcan
 
                                 @can('event_edit')
@@ -90,7 +93,7 @@
                             </td>
 
                         </tr>
-                @endforeach    
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -143,7 +146,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

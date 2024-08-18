@@ -19,6 +19,7 @@ class UserRegister extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'event_id',
         'name',
         'email',
         'phone_no',

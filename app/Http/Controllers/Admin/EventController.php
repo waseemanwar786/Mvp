@@ -10,6 +10,7 @@ use Gate;
 use Symfony\Component\HttpFoundation\Response;
 use Auth;
 use DB;
+use App\Models\UserRegister;
 
 class EventController extends Controller
 {
@@ -31,7 +32,7 @@ class EventController extends Controller
             'slug' => 'required',
             'event_description' => 'required',
         ]);
-    
+
         $file = $request->file('hero_image');
 
         $destinationPath = 'uploads';
@@ -91,5 +92,11 @@ class EventController extends Controller
         abort_if(!$event, Response::HTTP_NOT_FOUND, '404 Not Found');
 
         return view('registeruser', compact('event'));
+    }
+
+    public function users($id){
+        $users = UserRegister::where('event_id', $id)->get();
+        $event = Event::find($id);
+        return view('admin.event.users',compact('users','event'));
     }
 }
