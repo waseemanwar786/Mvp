@@ -7,7 +7,7 @@
     </div>
 
     <ul class="c-sidebar-nav">
-        
+
         @can('event_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.events.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/events") || request()->is("admin/events*") ? "c-active" : "" }}">
@@ -56,11 +56,19 @@
                                 {{ trans('cruds.user.title') }}
                             </a>
                         </li>
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.users.registered") }}" class="c-sidebar-nav-link {{ request()->is("admin/registered/users") || request()->is("admin/registered/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-user c-sidebar-nav-icon">
+
+                                </i>
+                                Registered Users
+                            </a>
+                        </li>
                     @endcan
                 </ul>
             </li>
         @endcan
-        
+
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">

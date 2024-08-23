@@ -39,7 +39,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::get('users/registered', 'UsersController@registered')->name('users.registered');
     Route::resource('users', 'UsersController');
+
 
     //event
     Route::get('/events', 'EventController@index')->name('events.index');
